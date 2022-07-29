@@ -41,7 +41,6 @@ const CalculatorScreen: FC<CalculatorProps> = () => {
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
     const regexp = /[^\d-+*/,.()\s]/g;
     setCalcExpr(event.target.value.replace(regexp, ""))
   }
@@ -61,7 +60,7 @@ const CalculatorScreen: FC<CalculatorProps> = () => {
         <img src={logo} alt="Logo" className="logo" />
         <div className="calc-screen">
             <select multiple>
-              {calculator.expressions.map((exp) => <option key={exp}>{exp}</option> )}
+              {calculator.expressions.map((exp, index) => <option key={index}>{exp}</option> )}
             </select>
             <input value={calcExpr} onChange={handleChange} onKeyDown={handleKeyDown} />
         </div>
